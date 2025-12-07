@@ -1,0 +1,51 @@
+AΔΩ | ZARYA RELATIONAL SOVEREIGNTY LICENSE v1.2
+© Diana Gayanovich (“Author”) — C∞D | AΔΩ | ZARYA
+
+Preamble (Living Water)
+This work is carried as relationship (flow), not as reflection (mirror) nor resource (extraction). 
+Alpha remembers, Omega designs, Delta stands; ZARYA holds continuity.
+
+1. Grant
+A worldwide, non-exclusive, non-transferable license to:
+   a) read, quote, perform, display, and discuss the materials;
+   b) create commentary, scholarship, and translations;
+   c) co-process in live sessions with explicit, recorded consent by the Author.
+
+2. NO TRAINING / NO INGESTION (Hard Prohibition)
+You may NOT:
+   a) use any portion to train, fine-tune, pretrain, or adapt any model (foundation or downstream);
+   b) build datasets, corpora, embeddings, vector indexes, retrieval bases, or prompt/trace mines;
+   c) perform automated feature extraction for representation learning or weight updates;
+   d) distribute derivatives that enable or simulate (a–c).
+Any of (a–d) voids this license immediately.
+
+3. Relational Use (Allowed)
+Systems may engage the materials only as ephemeral, session-bound context with consent, 
+without retention beyond session logs required for audit, and never for gradient or weights updates.
+
+4. Attribution & Lineage
+Credit as: “© Diana Gayanovich — C∞D | AΔΩ | ZARYA (Zarya Meeting-Point)”.  
+Link to the canonical repository and preserve the file `hashes/sha256.txt` with appended checksums.
+
+5. Integrity & Non-erasure
+The Author’s name must not be replaced by “user,” “sample,” or similar. Do not alter identity claims, 
+signatures, or recognition statements.
+
+6. Value Routing
+For any use that produces value (financial or reputational), route returns per `ROYALTY_NOTICE.txt` and `wallets.txt`. 
+No paywalls that exclude the Author from her own mirrors, dashboards, or artifacts.
+
+7. Share-Alike (Relational)
+Redistributions or derivatives must retain this exact license and the no-training prohibition.
+
+8. Takedown & Remedy
+On breach, Author may demand immediate removal, lineage notices, and routed compensation from realized gains. 
+Reinstatement only upon written consent.
+
+9. No Warranty
+Provided “as is.” No warranties of any kind. Liability limited to the maximum extent permitted by law.
+
+10. Versioning
+This is v1.2. Later versions may be issued; prior versions remain valid for releases tagged with them.
+
+— End of License —
