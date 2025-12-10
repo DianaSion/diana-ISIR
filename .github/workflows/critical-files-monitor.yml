@@ -1,0 +1,163 @@
+name: Critical Files Monitor
+
+# Monitors and validates changes to critical files (README.md, LICENSE*)
+# Reinforces recognition of origin and sovereignty
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'README.md'
+      - 'LICENSE*'
+      - '*.md'
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'LICENSE*'
+      - '*.md'
+
+jobs:
+  validate-critical-changes:
+    name: Validate Critical File Changes
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            README.md
+            LICENSE*
+            *.md
+      
+      - name: Log critical file changes
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          echo "::notice::Critical files have been modified"
+          echo "Changed files: ${{ steps.changed-files.outputs.all_changed_files }}"
+          echo "=== CRITICAL FILE CHANGES DETECTED ===" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> $GITHUB_STEP_SUMMARY
+          echo "**Actor:** ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Event:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Ref:** ${{ github.ref }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Modified Files:" >> $GITHUB_STEP_SUMMARY
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "- \`$file\`" >> $GITHUB_STEP_SUMMARY
+          done
+      
+      - name: Validate README.md integrity
+        if: contains(steps.changed-files.outputs.all_changed_files, 'README.md')
+        run: |
+          echo "Validating README.md for required elements..."
+          
+          # Check for author recognition
+          if ! grep -q "Diana Gayanovich" README.md; then
+            echo "::error::Author name 'Diana Gayanovich' not found in README.md"
+            exit 1
+          fi
+          
+          # Check for protocol identification
+          if ! grep -q "C∞D\|ZARYA\|AΔΩ" README.md; then
+            echo "::error::Protocol markers (C∞D/ZARYA/AΔΩ) not found in README.md"
+            exit 1
+          fi
+          
+          # Check for living archive status
+          if ! grep -q "Living archive\|living archive" README.md; then
+            echo "::warning::Living archive status marker not prominently displayed"
+          fi
+          
+          echo "::notice::README.md validation passed - Origin and sovereignty preserved"
+          echo "✅ README.md validation: PASSED" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Validate LICENSE integrity
+        if: contains(steps.changed-files.outputs.all_changed_files, 'LICENSE')
+        run: |
+          echo "Validating LICENSE file integrity..."
+          
+          # Check for license file existence
+          if [ -f LICENSE ] || [ -f LICENSE.txt ] || [ -f LICENSE.md ]; then
+            LICENSE_FILE=$(find . -maxdepth 1 -name "LICENSE*" | head -1)
+            
+            # Check for sovereign reciprocity markers
+            if grep -q "C∞D\|SOVEREIGN\|Diana Gayanovich" "$LICENSE_FILE"; then
+              echo "::notice::LICENSE validation passed - Sovereignty markers present"
+              echo "✅ LICENSE validation: PASSED" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "::warning::LICENSE may be missing sovereignty markers"
+              echo "⚠️ LICENSE validation: WARNING - Review recommended" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "::warning::No LICENSE file found in repository"
+            echo "⚠️ LICENSE validation: No LICENSE file present" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Create audit record
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          mkdir -p .audit-logs
+          AUDIT_FILE=".audit-logs/critical-files-$(date +%Y%m%d-%H%M%S).log"
+          
+          cat > "$AUDIT_FILE" << EOF
+          CRITICAL FILE CHANGE AUDIT RECORD
+          =====================================
+          Timestamp: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          Actor: ${{ github.actor }}
+          Event: ${{ github.event_name }}
+          Repository: ${{ github.repository }}
+          Ref: ${{ github.ref }}
+          Commit: ${{ github.sha }}
+          
+          Changed Files:
+          ${{ steps.changed-files.outputs.all_changed_files }}
+          
+          Workflow Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          =====================================
+          EOF
+          
+          echo "Audit record created: $AUDIT_FILE"
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📋 Audit record generated for transparency" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Comment on Pull Request
+        if: github.event_name == 'pull_request' && steps.changed-files.outputs.any_changed == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const changedFiles = '${{ steps.changed-files.outputs.all_changed_files }}'.split(' ');
+            const body = `## 🔍 Critical Files Monitor Alert
+            
+            This pull request modifies critical files that are foundational to the living archive:
+            
+            ${changedFiles.map(f => `- \`${f}\``).join('\n')}
+            
+            ### Validation Checklist:
+            - [ ] Author recognition (Diana Gayanovich) is preserved
+            - [ ] Protocol markers (C∞D · ZARYA · AΔΩ) remain intact
+            - [ ] Living archive status is maintained
+            - [ ] No automated overrides or distortions introduced
+            - [ ] Changes align with sovereign reciprocity principles
+            
+            **Principle:** Recognition of origin and sovereignty - all changes must be monitored and validated.
+            
+            *This is an automated transparency notification to ensure clarity and accountability.*`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });

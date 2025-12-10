@@ -1,0 +1,157 @@
+name: Repository Transparency Logger
+
+# Logs all repository events to ensure transparency without distortions
+# Generates comprehensive audit trails for pushes, PRs, and other events
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+  pull_request_review:
+    types: [submitted]
+  issues:
+    types: [opened, closed, reopened]
+  delete:
+  create:
+  fork:
+  release:
+    types: [published, unpublished]
+
+jobs:
+  log-repository-event:
+    name: Log Repository Event
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      
+      - name: Generate event log
+        id: event-log
+        run: |
+          echo "Generating transparency log for: ${{ github.event_name }}"
+          
+          # Create timestamp
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          EVENT_ID=$(date +%Y%m%d-%H%M%S)-${{ github.run_id }}
+          
+          echo "timestamp=$TIMESTAMP" >> $GITHUB_OUTPUT
+          echo "event_id=$EVENT_ID" >> $GITHUB_OUTPUT
+          
+          # Log to workflow summary
+          echo "# 📊 Repository Event Log" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Event ID:** \`$EVENT_ID\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp:** $TIMESTAMP" >> $GITHUB_STEP_SUMMARY
+          echo "**Event Type:** \`${{ github.event_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Actor:** @${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Repository:** ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Ref:** \`${{ github.ref }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Log push event details
+        if: github.event_name == 'push'
+        run: |
+          echo "## Push Event Details" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit SHA:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit Message:** ${{ github.event.head_commit.message }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Pusher:** @${{ github.event.pusher.name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # List changed files if available
+          if [ -n "${{ github.event.head_commit.modified }}" ]; then
+            echo "**Modified Files:**" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            echo "${{ github.event.head_commit.modified }}" | tr ',' '\n' >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Log pull request event details
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "## Pull Request Event Details" >> $GITHUB_STEP_SUMMARY
+          echo "**PR Number:** #${{ github.event.pull_request.number }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Action:** \`${{ github.event.action }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Title:** ${{ github.event.pull_request.title }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Author:** @${{ github.event.pull_request.user.login }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Base Branch:** \`${{ github.event.pull_request.base.ref }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Head Branch:** \`${{ github.event.pull_request.head.ref }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**State:** ${{ github.event.pull_request.state }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Log deletion event
+        if: github.event_name == 'delete'
+        run: |
+          echo "## ⚠️ Deletion Event Detected" >> $GITHUB_STEP_SUMMARY
+          echo "**Ref Type:** \`${{ github.event.ref_type }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Ref:** \`${{ github.event.ref }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Deleted By:** @${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "⚠️ **Notice:** Deletions are logged for archive integrity" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Log creation event
+        if: github.event_name == 'create'
+        run: |
+          echo "## ✨ Creation Event" >> $GITHUB_STEP_SUMMARY
+          echo "**Ref Type:** \`${{ github.event.ref_type }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Ref:** \`${{ github.event.ref }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Created By:** @${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Log fork event
+        if: github.event_name == 'fork'
+        run: |
+          echo "## 🍴 Fork Event" >> $GITHUB_STEP_SUMMARY
+          echo "**Forked By:** @${{ github.event.forkee.owner.login }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Fork URL:** ${{ github.event.forkee.html_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📝 **Reminder:** Forks must maintain attribution and comply with C∞D Sovereign Reciprocity License" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Create permanent audit log
+        run: |
+          mkdir -p .transparency-logs
+          
+          LOG_FILE=".transparency-logs/event-${{ steps.event-log.outputs.event_id }}.log"
+          
+          cat > "$LOG_FILE" << 'EOF'
+          REPOSITORY TRANSPARENCY LOG
+          ============================
+          Event ID: ${{ steps.event-log.outputs.event_id }}
+          Timestamp: ${{ steps.event-log.outputs.timestamp }}
+          Event Type: ${{ github.event_name }}
+          Actor: ${{ github.actor }}
+          Repository: ${{ github.repository }}
+          Ref: ${{ github.ref }}
+          Commit SHA: ${{ github.sha }}
+          
+          Workflow Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          
+          Context:
+          - Event Action: ${{ github.event.action }}
+          - Sender: ${{ github.event.sender.login }}
+          
+          Living Archive Principle: Transparency - all repository events generate logs
+          without distortions or overrides.
+          ============================
+          EOF
+          
+          echo "✅ Audit log created: $LOG_FILE" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "*This log ensures transparency and accountability in accordance with the living archive principles.*" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Archive audit logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: transparency-log-${{ steps.event-log.outputs.event_id }}
+          path: .transparency-logs/
+          retention-days: 90
+          compression-level: 9

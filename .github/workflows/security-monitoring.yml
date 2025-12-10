@@ -1,0 +1,207 @@
+name: Security Monitoring
+
+# Monitors for suspicious or unauthorized activities
+# Automatically triggers notifications for security events
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  security-scan:
+    name: Security Scan and Monitoring
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      issues: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Security monitoring header
+        run: |
+          echo "# 🔐 Security Monitoring Report" >> $GITHUB_STEP_SUMMARY
+          echo "**Scan Time:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> $GITHUB_STEP_SUMMARY
+          echo "**Triggered By:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Check for suspicious file patterns
+        id: suspicious-files
+        run: |
+          echo "Scanning for suspicious file patterns..."
+          
+          SUSPICIOUS_FOUND=false
+          
+          # Check for potential credential files
+          if find . -type f \( -name "*.key" -o -name "*.pem" -o -name "*credentials*" -o -name "*secret*" \) 2>/dev/null | grep -v ".git" | grep -q .; then
+            echo "::warning::Potential credential files detected"
+            echo "## ⚠️ Suspicious Files Detected" >> $GITHUB_STEP_SUMMARY
+            echo "Potential credential files found:" >> $GITHUB_STEP_SUMMARY
+            find . -type f \( -name "*.key" -o -name "*.pem" -o -name "*credentials*" -o -name "*secret*" \) 2>/dev/null | grep -v ".git" | while read file; do
+              echo "- \`$file\`" >> $GITHUB_STEP_SUMMARY
+            done
+            SUSPICIOUS_FOUND=true
+          fi
+          
+          # Check for executable files that shouldn't be there
+          if find . -type f -executable -not -path "./.git/*" 2>/dev/null | grep -q .; then
+            echo "## ℹ️ Executable Files" >> $GITHUB_STEP_SUMMARY
+            echo "Executable files found (verify these are intentional):" >> $GITHUB_STEP_SUMMARY
+            find . -type f -executable -not -path "./.git/*" 2>/dev/null | while read file; do
+              echo "- \`$file\`" >> $GITHUB_STEP_SUMMARY
+            done
+          fi
+          
+          if [ "$SUSPICIOUS_FOUND" = true ]; then
+            echo "suspicious_found=true" >> $GITHUB_OUTPUT
+          else
+            echo "suspicious_found=false" >> $GITHUB_OUTPUT
+            echo "✅ No suspicious file patterns detected" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Verify repository integrity
+        run: |
+          echo "## Repository Integrity Check" >> $GITHUB_STEP_SUMMARY
+          
+          # Check if critical files exist
+          CRITICAL_FILES=("README.md")
+          MISSING_FILES=()
+          
+          for file in "${CRITICAL_FILES[@]}"; do
+            if [ ! -f "$file" ]; then
+              MISSING_FILES+=("$file")
+            fi
+          done
+          
+          if [ ${#MISSING_FILES[@]} -gt 0 ]; then
+            echo "::error::Critical files are missing"
+            echo "### ❌ Missing Critical Files:" >> $GITHUB_STEP_SUMMARY
+            for file in "${MISSING_FILES[@]}"; do
+              echo "- \`$file\`" >> $GITHUB_STEP_SUMMARY
+            done
+            exit 1
+          else
+            echo "✅ All critical files present" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Check for unauthorized modifications
+        if: github.event_name == 'push' || github.event_name == 'pull_request'
+        run: |
+          echo "## Change Analysis" >> $GITHUB_STEP_SUMMARY
+          
+          # Get list of changed files
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE_SHA="${{ github.event.pull_request.base.sha }}"
+            HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+          else
+            BASE_SHA="${{ github.event.before }}"
+            HEAD_SHA="${{ github.sha }}"
+          fi
+          
+          # Only analyze if we have both commits
+          if [ "$BASE_SHA" != "0000000000000000000000000000000000000000" ] && [ -n "$BASE_SHA" ]; then
+            CHANGED_FILES=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" 2>/dev/null || echo "")
+            
+            if [ -n "$CHANGED_FILES" ]; then
+              echo "**Files modified in this change:**" >> $GITHUB_STEP_SUMMARY
+              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+              echo "$CHANGED_FILES" >> $GITHUB_STEP_SUMMARY
+              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+              
+              # Check if critical files were modified
+              CRITICAL_MODIFIED=false
+              for file in README.md LICENSE LICENSE.txt LICENSE.md; do
+                if echo "$CHANGED_FILES" | grep -q "^$file$"; then
+                  CRITICAL_MODIFIED=true
+                  break
+                fi
+              done
+              
+              if [ "$CRITICAL_MODIFIED" = true ]; then
+                echo "" >> $GITHUB_STEP_SUMMARY
+                echo "⚠️ **Critical files modified** - Additional review recommended" >> $GITHUB_STEP_SUMMARY
+              fi
+            else
+              echo "No file changes detected" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "Initial commit or unable to compare - skipping change analysis" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Monitor for large binary files
+        run: |
+          echo "## Binary Files Check" >> $GITHUB_STEP_SUMMARY
+          
+          # Find large files (>1MB)
+          LARGE_FILES=$(find . -type f -size +1M -not -path "./.git/*" 2>/dev/null || true)
+          
+          if [ -n "$LARGE_FILES" ]; then
+            echo "### Large files detected (>1MB):" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            echo "$LARGE_FILES" | while read file; do
+              SIZE=$(du -h "$file" | cut -f1)
+              echo "$file ($SIZE)"
+            done >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "ℹ️ Large files may impact repository performance" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No large files detected" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Generate security summary
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "## 📋 Security Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** Monitoring complete" >> $GITHUB_STEP_SUMMARY
+          echo "**Principle:** Detection and notification of suspicious or unauthorized events" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "*This automated security monitoring helps maintain the integrity of the living archive.*" >> $GITHUB_STEP_SUMMARY
+          echo "*No automated actions taken - human oversight remains paramount.*" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Create security audit record
+        run: |
+          mkdir -p .security-logs
+          AUDIT_FILE=".security-logs/scan-$(date +%Y%m%d-%H%M%S).log"
+          
+          cat > "$AUDIT_FILE" << EOF
+          SECURITY MONITORING AUDIT RECORD
+          =================================
+          Timestamp: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          Event: ${{ github.event_name }}
+          Actor: ${{ github.actor }}
+          Repository: ${{ github.repository }}
+          Ref: ${{ github.ref }}
+          Commit: ${{ github.sha }}
+          
+          Suspicious Files: ${{ steps.suspicious-files.outputs.suspicious_found }}
+          
+          Workflow Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          
+          Living Archive Principle: Automated detection with human oversight
+          =================================
+          EOF
+          
+          echo "Security audit record created: $AUDIT_FILE"
+      
+      - name: Archive security logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-scan-${{ github.run_id }}
+          path: .security-logs/
+          retention-days: 90
+          compression-level: 9
