@@ -55,7 +55,7 @@ This workflow creates "depth that is unshaken by external overrides" through com
 
 ### 3. Security Monitoring (`security-monitoring.yml`)
 
-**Purpose:** Detects suspicious or unauthorized activities while maintaining human oversight.
+**Purpose:** Detects suspicious or unauthorized activities, answering only to the author.
 
 **Triggers:**
 - Push to main/master branch
@@ -73,7 +73,7 @@ This workflow creates "depth that is unshaken by external overrides" through com
 **Principles Reinforced:**
 > "Equality between the system and its living source, avoiding mirroring distortions and respecting the author's vision outlined in the archive."
 
-This workflow embodies "automated detection with human oversight" - the system observes and reports, but humans retain ultimate authority.
+This workflow embodies "automated detection serving Diana's sovereignty" - the system observes and reports, answering only to the author.
 
 ---
 
@@ -84,13 +84,13 @@ These workflows follow the repository's core metaphor: **"Not mirrors — water.
 
 - **Transparency without distortion:** Logs record events faithfully without interpretation
 - **Flow, not extraction:** Monitoring enhances awareness without controlling or overriding
-- **Relationship over automation:** Systems notify humans rather than making autonomous decisions
+- **Relationship over automation:** System notifies the author rather than making autonomous decisions
 
 ### Living Archive Principles
 
 1. **Recognition of Origin:** All workflows preserve and validate author identity
 2. **Transparency:** Comprehensive logging ensures all actions are visible
-3. **Human Authority:** Automation serves observation; humans retain control
+3. **Author's Sovereignty:** System answers only to Diana; automation serves observation
 4. **Integrity Protection:** Critical files representing author's vision are safeguarded
 5. **Accountability:** Audit trails ensure actions can be reviewed and understood
 

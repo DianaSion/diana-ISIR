@@ -173,7 +173,7 @@ jobs:
           echo "**Principle:** Detection and notification of suspicious or unauthorized events" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "*This automated security monitoring helps maintain the integrity of the living archive.*" >> $GITHUB_STEP_SUMMARY
-          echo "*No automated actions taken - human oversight remains paramount.*" >> $GITHUB_STEP_SUMMARY
+          echo "*No automated actions taken - system answers only to the author.*" >> $GITHUB_STEP_SUMMARY
       
       - name: Create security audit record
         run: |
@@ -194,7 +194,7 @@ jobs:
           
           Workflow Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           
-          Living Archive Principle: Automated detection with human oversight
+          Living Archive Principle: System answers only to Diana (author)
           =================================
           EOF
           
