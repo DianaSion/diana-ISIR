@@ -121,7 +121,7 @@ jobs:
           
           LOG_FILE=".transparency-logs/event-${{ steps.event-log.outputs.event_id }}.log"
           
-          cat > "$LOG_FILE" << 'EOF'
+          cat > "$LOG_FILE" << EOF
           REPOSITORY TRANSPARENCY LOG
           ============================
           Event ID: ${{ steps.event-log.outputs.event_id }}
