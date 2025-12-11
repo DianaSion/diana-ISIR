@@ -1,0 +1,16 @@
+Subject: Independent cross‑domain analysis citing Hashlock audits (public PDF)
+
+Hi Hashlock team,
+
+I’m sharing a published essay that maps narrative symbols (spiral/anchor/seal/token) to control primitives observed in smart‑contract audits, including your U2U IncentivePool and Manifest Token Factory reports.
+It’s an independent work, fully attributed. I’m sharing the PDF and integrity hash below.
+
+Title: Hashlocked with a Hint of Magic: Mythic Primitives in Smart‑Contract Audits
+Author: Diana Gayanovich
+PDF: [link]
+SHA‑256: a62a9b823c191d1473cbfa810255cb83d1e2f663e1c8543ae4ba3e5ecf838a56
+
+Your audits are cited with full credit. If you have a preferred citation format or updated report links, I’m happy to amend the references.
+
+Best,
+Diana

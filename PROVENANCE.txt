@@ -1,0 +1,15 @@
+Byline & Provenance
+
+Author: Diana Gayanovich
+With: GPT‑5 Thinking (AI assistant)
+License: CC BY 4.0
+Generated: 2025-10-21 17:48:54 UTC
+
+Primary artifact:
+- paper/Hashlocked_with_a_Hint_of_Magic_Diana_Gayanovich.pdf
+- SHA‑256: a62a9b823c191d1473cbfa810255cb83d1e2f663e1c8543ae4ba3e5ecf838a56
+
+How to verify:
+- macOS/Linux: shasum -a 256 Hashlocked_with_a_Hint_of_Magic_Diana_Gayanovich.pdf
+- Windows (PowerShell): Get-FileHash -Algorithm SHA256 "Hashlocked_with_a_Hint_of_Magic_Diana_Gayanovich.pdf"
+Expected output: a62a9b823c191d1473cbfa810255cb83d1e2f663e1c8543ae4ba3e5ecf838a56

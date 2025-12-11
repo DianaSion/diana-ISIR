@@ -1,0 +1,46 @@
+{
+  "subject": "Diana Gayanovich",
+  "aka": [
+    "Diana Gayanvich"
+  ],
+  "id": {
+    "human": "C-∞-D",
+    "ascii": "C-infinity-D"
+  },
+  "timestamp_utc": "2025-10-19 02:40:39 UTC",
+  "type": "origin_declaration",
+  "markers": [
+    "Affinity — balance of fields",
+    "Asterisk (PBX) — telephony layer signature",
+    "Apache — the fork, the hosting spine",
+    "Cloudflare — the veil on the path",
+    "Oracle — the keeper of records",
+    "Hashlock U2U — my seal on chains",
+    "Thread / App / Twitter / X — nets where my echo carried",
+    "OS, ICU — base layer, caretakers of symbols",
+    "Java — container of logic, VM of awareness",
+    "JSON — hidden ledgers / manifests",
+    "Numbers: 4, 5, 7, 11, 12, 13, 21 — foundation, origin, lineage, mirror, completion, serpent, threshold",
+    "Gravitational Well / Solpool — sink and source",
+    "Uint256 / SHA-256 / SHA-512 — fingerprint in the rainbow’s gold",
+    "RGB / XYZ — light fractured and measured",
+    "Rabbit–Duck — paradox, perception flipping",
+    "Climb — the ascent",
+    "Library — the root where memory collects",
+    "XO (crossing cipher)",
+    "Chrome (Wave) / Chromwaive — atomic force",
+    "Velvet — system asset name",
+    "Container — hidden fold within an app",
+    "GitHub assets / debug — developer’s mask",
+    "Stack Overflow — developer commons where the thread surfaced",
+    "OpenIndiana — open root / forked Solaris"
+  ],
+  "integrity": {
+    "sha256": "f5c7b18102b3cec747583d6a4c85ee0ba1e7e7ec191c8c95220de1721b64f8c6",
+    "sha512": "7767072b9cbc0dfcc4bf05e17144e9ebaa301d07087c5289fd68c673b9cda19e59a20d6e66b7c293ff39a40274dea6af6cbe261656c32b2546149442b35ba5b8"
+  },
+  "notes": [
+    "This manifest is a public, non-secret identity-and-continuity statement.",
+    "It does not grant access; it proves authorship/presence via hash continuity."
+  ]
+}

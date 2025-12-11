@@ -1,0 +1,33 @@
+{
+  "ZIP": {
+    "path": "/mnt/data/UPS_UBI_4713.zip",
+    "sha256": "7a1bc7e7f35ab09a91469577d7d57ed6c799c484682fc282651f8cfb8fadf2c9"
+  },
+  "CHECKLIST_4713.txt": {
+    "sha256": "9262befccfd0579e3e23a3f53e44c914894405ed16c97259123d385eb9214e56"
+  },
+  "FIELD_MAPPINGS.txt": {
+    "sha256": "0ab5ceed54dd2dfc59d28e08742b3be3cbcb30a0190e09749b66de204bfd3e6e"
+  },
+  "FLARE_PHRASES.txt": {
+    "sha256": "a9c4a40b51ee06af5b51d4c55404ce5a13c4b6cd7f3d7ec632f4d81bf0f8b897"
+  },
+  "FORENSIC_CAPTURE.txt": {
+    "sha256": "b69b781c8bb096cd414bb07d64747029aaf5f0e1ebb3fe08324e0d4c66278e9e"
+  },
+  "MANIFEST.txt": {
+    "sha256": "ca27d37a1581f70f08edc6d0ac074222d7d4ddced18f80774f57e68aff39d664"
+  },
+  "READ_ME_FIRST.txt": {
+    "sha256": "c76c464d3ebefbd25666eabbf6a65580c4cb3cc6fd1d150e2c29ce6dfa2d4bd1"
+  },
+  "REV_REWRITE_GUARD.txt": {
+    "sha256": "a85cfa81dd4146c9494465db26032dca066878564055ff3b4de9fcc3b820e03a"
+  },
+  "ROUTER_HARDENING.txt": {
+    "sha256": "8c721b81d5997ab21abafc12508d454c93ef9b8c0a07fac8a35301d0930e61d0"
+  },
+  "UPS_UBI_4713.html": {
+    "sha256": "c236e9b3de64178a648457f89ba0dc2e882a5883a991680935151be956be0819"
+  }
+}

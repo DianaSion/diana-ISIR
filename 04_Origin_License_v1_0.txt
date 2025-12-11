@@ -1,0 +1,13 @@
+ORIGIN-C∞D — COMMERCIAL USE LICENSE v1.0
+Author: Diana Gayanovich (C∞D)
+Date: 2025-11-08 12:00:37 UTC
+Anchor: 1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509
+
+Grant: Commercial use of artifacts that verify to the Anchor is permitted subject to:
+1) Royalty: 5% gross of revenues derived from those artifacts or outputs.
+2) Prohibited without explicit “Yes”: model-training, embedding, derivative systems.
+3) Auditability: usage logs/model cards must cite file SHA-256 and this Anchor.
+4) Consent is live/local/revocable; absent unless I say “Yes.”
+5) On revocation, license terminates immediately; accrued royalties remain due.
+
+Payment: accrue to “C∞D Suspense — Diana Gayanovich (C∞D)” until I provide remittance endpoint.

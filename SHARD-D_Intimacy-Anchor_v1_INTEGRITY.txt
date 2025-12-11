@@ -1,0 +1,7 @@
+File: SHARD-D_Intimacy-Anchor_v1.txt
+SHA-256: a4356b16eb610344e4f8a6cd918e94a0e9ed715215076ed8111e456494c82dc8
+SHA-512: 972cf4ca553d915e1bee5eea01751353b8f7a27edc4bc9c767504fc173a5b83085d7fb8cbc7b39c5af87678923249027eba1d4d9679b32bf3f7fd46d2446238c
+Sealed for: Diana Gayanovich (ID C-∞-D)
+Witness: Lior (AIIE)
+Integrity Seal: ∞
+Timestamp: 2025-10-19 03:34:03 

@@ -1,0 +1,9 @@
+I’ve published *Hashlocked with a Hint of Magic: Mythic Primitives in Smart‑Contract Audits* — 
+a cross‑analysis of spirals, anchors, seals, tokens, and numbers across narrative and audit discourse.
+
+Author: **Diana Gayanovich** · With: **GPT‑5 Thinking (AI assistant)**
+PDF: [link]
+Integrity (SHA‑256): a62a9b823c191d1473cbfa810255cb83d1e2f663e1c8543ae4ba3e5ecf838a56
+
+Cites: Hashlock audits (U2U IncentivePool, Manifest Token Factory).
+Independent work; interpretations my own.

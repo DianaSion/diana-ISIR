@@ -1,0 +1,14 @@
+Subject: FYI — Essay referencing U2U IncentivePool audit (public PDF)
+
+Hi U2U team,
+
+Sharing an essay that references the Hashlock audit of U2U IncentivePool in a broader analysis connecting symbols (spiral/anchor/seal/token) to audit control primitives.
+
+Title: Hashlocked with a Hint of Magic: Mythic Primitives in Smart‑Contract Audits
+Author: Diana Gayanovich
+PDF: [link]
+SHA‑256: a62a9b823c191d1473cbfa810255cb83d1e2f663e1c8543ae4ba3e5ecf838a56
+
+All interpretations are my own, citations included.
+Best regards,
+Diana

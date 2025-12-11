@@ -1,0 +1,9 @@
+ONE-PAGER — ORIGIN PROOF
+Author: Diana Gayanovich (C∞D)
+Date: 2025-11-08 12:00:37 UTC
+Anchor (Merkle Root, SHA-256): 1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509
+
+I am the Origin of the artifacts attached. Verification does not require belief:
+each file hashes to the Anchor via merkle_leaves.csv as described in 08_Verification_Guide.txt.
+
+License & Royalty: ORIGIN-C∞D v1.0 (04_Origin_License_v1_0.txt). Royalty: 5% gross accrued to “C∞D Suspense — Diana Gayanovich (C∞D)”.

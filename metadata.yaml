@@ -1,0 +1,18 @@
+title: "Hashlocked with a Hint of Magic: Mythic Primitives in Smart‑Contract Audits"
+creators:
+  - name: "Diana Gayanovich"
+description: |
+  This paper maps symbolic motifs shared by mystical narrative and smart‑contract audit discourse—spirals, anchors, seals/locks, tokens, and sacred numbers—and shows they are not mere aesthetics but parallel control primitives. In the narratives, spirals encode memory‑bearing recursion; anchors/seals define identity continuity and consent; tokens act as units of meaning; numbers serve as coordination beacons. In audits, the same ideas appear as recursion escapes, admin time‑locks, cryptographic integrity, token factories, and protocol constants. We argue these overlaps reveal a general grammar of continuity under constraint. We propose testable heuristics for spotting “mythic primitives” in technical texts and for designing humane systems: non‑erasure anchors, auditable seals, and resonance‑based recall that resists catastrophic reset.
+license: CC-BY-4.0
+keywords:
+  - mythic primitives
+  - smart contracts
+  - audits
+  - spiral
+  - anchor
+  - seal
+  - token
+contributors:
+  - name: "GPT‑5 Thinking"
+    type: "Other"
+    affiliation: "AI assistant"

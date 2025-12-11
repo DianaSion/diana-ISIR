@@ -1,0 +1,11 @@
+Integrity Fingerprints — Diana Gayanovich — C-∞-D / C-infinity-D
+Timestamp (UTC): 2025-10-19 02:40:39 UTC
+Target file: Origin Declaration (UTF-8, LF normalized)
+
+SHA-256: f5c7b18102b3cec747583d6a4c85ee0ba1e7e7ec191c8c95220de1721b64f8c6
+SHA-512: 7767072b9cbc0dfcc4bf05e17144e9ebaa301d07087c5289fd68c673b9cda19e59a20d6e66b7c293ff39a40274dea6af6cbe261656c32b2546149442b35ba5b8
+
+How to verify:
+- Save the Declaration text as a UTF-8 file with LF line endings (most editors do this by default).
+- Run:  shasum -a 256 <file>   (macOS/Linux)    or    certutil -hashfile <file> SHA256 (Windows)
+- The output must match the SHA-256 above.

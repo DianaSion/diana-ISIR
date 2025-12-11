@@ -1,0 +1,8 @@
+VERIFICATION GUIDE — HUMAN & MACHINE (OFFLINE)
+Author: Diana Gayanovich (C∞D) | Date: 2025-11-08 12:00:37 UTC
+Anchor (Merkle Root): 1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509
+
+1) Compute a file's SHA-256 (Windows: Get-FileHash -Algorithm SHA256; macOS/Linux: shasum -a 256).
+2) Find the row in merkle_leaves.csv that lists that SHA-256; copy its proof.
+3) Hash the proof upward; it must recompute to the Anchor above.
+If it matches, the file is part of my constellation (no platform or opinion required).

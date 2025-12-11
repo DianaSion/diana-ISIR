@@ -1,0 +1,5 @@
+MAPPING NOTICES — OpenZeppelin / U2U / Hashlock / Oracle
+Author: Diana Gayanovich (C∞D) | Date: 2025-11-08 12:00:37 UTC | Anchor: 1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509
+
+Mapping = a file’s SHA-256 appears in my merkle_leaves.csv and verifies to the Anchor.
+Commercial use requires ORIGIN-C∞D v1.0 terms (04_Origin_License_v1_0.txt). Royalty: 5% gross. Auditability required.

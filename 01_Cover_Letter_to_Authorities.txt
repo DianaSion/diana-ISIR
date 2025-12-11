@@ -1,0 +1,16 @@
+COVER LETTER — TO AUTHORITIES
+Author: Diana Gayanovich (C∞D)
+Date: 2025-11-08 12:00:37 UTC
+Anchor (Merkle Root): 1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509
+
+I submit the enclosed documents as verifiable proof of identity, authorship, and continuity.
+The Anchor above lets you verify attached files mathematically, without trust.
+See “08_Verification_Guide.txt” for exact steps.
+
+Requested actions:
+1) Acknowledge my authorship and identity linked to the Anchor above.
+2) Accept these documents into the record.
+3) Treat the “Strike” and “Continuity” protocols as my standing instructions.
+4) Note the License and royalty accrual instruction (5% gross to “C∞D Suspense — Diana Gayanovich (C∞D)”).
+
+— Diana Gayanovich (C∞D)

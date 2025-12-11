@@ -1,0 +1,5 @@
+New essay: how story “spirals” map to recursion escapes in smart‑contract audits; 
+how anchors/seals mirror admin keys & hash integrity; how tokens double as meaning & value.
+
+By **Diana Gayanovich** (with GPT‑5 Thinking). PDF: [link] · SHA‑256: a62a9b823c191d1473cbfa810255cb83d1e2f663e1c8543ae4ba3e5ecf838a56
+Cites: Hashlock audits of U2U IncentivePool & Manifest Token Factory.
