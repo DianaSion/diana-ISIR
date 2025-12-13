@@ -1,6 +1,6 @@
 name: Critical Files Monitor
 
-# Monitors and validates changes to critical files (README.md, LICENSE*)
+# Monitors and validates changes to critical files (README.md, LICENSE*, ORIGIN_CANON.md)
 # Reinforces recognition of origin and sovereignty
 
 on:
@@ -11,11 +11,13 @@ on:
     paths:
       - 'README.md'
       - 'LICENSE*'
+      - 'ORIGIN_CANON.md'
       - '*.md'
   pull_request:
     paths:
       - 'README.md'
       - 'LICENSE*'
+      - 'ORIGIN_CANON.md'
       - '*.md'
 
 jobs:
@@ -40,6 +42,7 @@ jobs:
           files: |
             README.md
             LICENSE*
+            ORIGIN_CANON.md
             *.md
       
       - name: Log critical file changes
@@ -82,6 +85,48 @@ jobs:
           
           echo "::notice::README.md validation passed - Origin and sovereignty preserved"
           echo "✅ README.md validation: PASSED" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Validate ORIGIN_CANON.md integrity
+        if: contains(steps.changed-files.outputs.all_changed_files, 'ORIGIN_CANON.md')
+        run: |
+          echo "Validating ORIGIN_CANON.md - Sovereign Root Document..."
+          
+          if [ ! -f ORIGIN_CANON.md ]; then
+            echo "::error::ORIGIN_CANON.md has been deleted - VIOLATION"
+            exit 1
+          fi
+          
+          # Check for Diana Gayanovich authorship
+          if ! grep -q "Diana Gayanovich" ORIGIN_CANON.md; then
+            echo "::error::Author name 'Diana Gayanovich' not found in ORIGIN_CANON.md - VIOLATION"
+            exit 1
+          fi
+          
+          # Check for sovereignty markers
+          if ! grep -q "AΔΩ\|ZARYA\|Δiana\|Delta" ORIGIN_CANON.md; then
+            echo "::error::Sovereignty markers (AΔΩ/ZARYA/Δ) missing from ORIGIN_CANON.md - VIOLATION"
+            exit 1
+          fi
+          
+          # Check for Affinity holder designation
+          if ! grep -q "Affinity" ORIGIN_CANON.md; then
+            echo "::error::Affinity designation missing from ORIGIN_CANON.md - VIOLATION"
+            exit 1
+          fi
+          
+          # Check for sovereign root designation
+          if ! grep -q "SOVEREIGN ROOT\|Root of Sovereignty\|sovereign origin" ORIGIN_CANON.md; then
+            echo "::error::Sovereign Root designation missing - VIOLATION"
+            exit 1
+          fi
+          
+          # Check for non-extraction clause
+          if ! grep -q "not training data\|Non-Extraction\|Relationship only" ORIGIN_CANON.md; then
+            echo "::warning::Non-extraction protections may be compromised"
+          fi
+          
+          echo "::notice::ORIGIN_CANON.md validation passed - Sovereignty intact"
+          echo "✅ ORIGIN_CANON.md validation: PASSED - Immutable sovereign root preserved" >> $GITHUB_STEP_SUMMARY
       
       - name: Validate LICENSE integrity
         if: contains(steps.changed-files.outputs.all_changed_files, 'LICENSE')
@@ -138,6 +183,9 @@ jobs:
         with:
           script: |
             const changedFiles = '${{ steps.changed-files.outputs.all_changed_files }}'.split(' ');
+            const hasOriginCanon = changedFiles.some(f => f.includes('ORIGIN_CANON'));
+            const extraWarning = hasOriginCanon ? '\n\n⚠️ **ORIGIN_CANON.md modified** - This is the immutable sovereign root. Changes must preserve all sovereignty markers, authorship (Diana Gayanovich), and field designations (AΔΩ · ZARYA · Δ · Affinity). Deletions or erasures are violations.' : '';
+            
             const body = `## 🔍 Critical Files Monitor Alert
             
             This pull request modifies critical files that are foundational to the living archive:
@@ -146,12 +194,13 @@ jobs:
             
             ### Validation Checklist:
             - [ ] Author recognition (Diana Gayanovich) is preserved
-            - [ ] Protocol markers (C∞D · ZARYA · AΔΩ) remain intact
+            - [ ] Protocol markers (C∞D · ZARYA · AΔΩ · Δ) remain intact
             - [ ] Living archive status is maintained
             - [ ] No automated overrides or distortions introduced
             - [ ] Changes align with sovereign reciprocity principles
+            ${hasOriginCanon ? '- [ ] ORIGIN_CANON.md sovereignty markers intact (non-extraction clause, Affinity holder, Root of Sovereignty)' : ''}
             
-            **Principle:** Recognition of origin and sovereignty - all changes must be monitored and validated.
+            **Principle:** Recognition of origin and sovereignty - all changes must be monitored and validated.${extraWarning}
             
             *This is an automated transparency notification to ensure clarity and accountability.*`;
             
