@@ -103,25 +103,42 @@ ANCHOR = "1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509"
 
 def compute_sha256(filepath):
     """Compute SHA-256 hash of a file."""
-    sha256_hash = hashlib.sha256()
-    with open(filepath, "rb") as f:
-        for byte_block in iter(lambda: f.read(4096), b""):
-            sha256_hash.update(byte_block)
-    return sha256_hash.hexdigest()
+    try:
+        sha256_hash = hashlib.sha256()
+        with open(filepath, "rb") as f:
+            for byte_block in iter(lambda: f.read(4096), b""):
+                sha256_hash.update(byte_block)
+        return sha256_hash.hexdigest()
+    except IOError as e:
+        print(f"ERROR: Cannot read file {filepath}: {e}", file=sys.stderr)
+        return None
 
 def load_evidence_index(csv_path):
     """Load evidence index from CSV."""
-    evidence = {}
-    with open(csv_path, 'r', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            evidence[row['filename']] = row['sha256']
-    return evidence
+    try:
+        evidence = {}
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if 'filename' not in row or 'sha256' not in row:
+                    print(f"WARNING: Skipping malformed row in {csv_path}", file=sys.stderr)
+                    continue
+                evidence[row['filename']] = row['sha256']
+        return evidence
+    except IOError as e:
+        print(f"ERROR: Cannot read evidence index {csv_path}: {e}", file=sys.stderr)
+        sys.exit(1)
+    except csv.Error as e:
+        print(f"ERROR: CSV parsing error in {csv_path}: {e}", file=sys.stderr)
+        sys.exit(1)
 
 def verify_file(filepath, evidence_index):
     """Verify a single file against evidence index."""
     filename = Path(filepath).name
     computed_hash = compute_sha256(filepath)
+    
+    if computed_hash is None:
+        return False, "ERROR READING FILE"
     
     if filename in evidence_index:
         expected_hash = evidence_index[filename]
@@ -140,12 +157,20 @@ def main():
     evidence_index = load_evidence_index("EVIDENCE_INDEX.csv")
     target = sys.argv[1]
     
+    if not Path(target).exists():
+        print(f"ERROR: Path does not exist: {target}", file=sys.stderr)
+        sys.exit(1)
+    
     if Path(target).is_file():
         result, status = verify_file(target, evidence_index)
         print(f"{target}: {status}")
         sys.exit(0 if result else 1)
     elif Path(target).is_dir():
-        files = Path(target).glob("*")
+        files = list(Path(target).glob("*"))
+        if not files:
+            print(f"WARNING: No files found in {target}", file=sys.stderr)
+            sys.exit(1)
+        
         results = []
         for f in files:
             if f.is_file():
@@ -156,6 +181,9 @@ def main():
         verified = sum(1 for _, s in results if s == "VERIFIED")
         print(f"\nTotal: {len(results)} files, {verified} verified")
         sys.exit(0 if verified == len(results) else 1)
+    else:
+        print(f"ERROR: {target} is neither a file nor a directory", file=sys.stderr)
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
@@ -165,6 +193,7 @@ B. BASH VERIFICATION SCRIPT
 
 ```bash
 #!/bin/bash
+set -euo pipefail
 # verify_evidence.sh - Verify files against Evidence Index
 
 EVIDENCE_INDEX="EVIDENCE_INDEX.csv"
@@ -175,7 +204,7 @@ echo "Anchor: $ANCHOR"
 echo "========================================"
 
 if [ ! -f "$EVIDENCE_INDEX" ]; then
-    echo "ERROR: Evidence index not found: $EVIDENCE_INDEX"
+    echo "ERROR: Evidence index not found: $EVIDENCE_INDEX" >&2
     exit 1
 fi
 
@@ -190,17 +219,25 @@ while IFS=, read -r filename sha256 description rest; do
         continue
     fi
     
+    # Skip empty lines
+    if [ -z "$filename" ]; then
+        continue
+    fi
+    
     if [ -f "$filename" ]; then
-        computed=$(shasum -a 256 "$filename" | cut -d' ' -f1)
-        if [ "$computed" = "$sha256" ]; then
+        computed=$(shasum -a 256 "$filename" 2>/dev/null | cut -d' ' -f1 || echo "ERROR")
+        if [ "$computed" = "ERROR" ]; then
+            echo "✗ ERROR READING: $filename" >&2
+            ((FAILED++))
+        elif [ "$computed" = "$sha256" ]; then
             echo "✓ VERIFIED: $filename"
             ((VERIFIED++))
         else
-            echo "✗ FAILED: $filename (hash mismatch)"
+            echo "✗ FAILED: $filename (hash mismatch)" >&2
             ((FAILED++))
         fi
     else
-        echo "? MISSING: $filename"
+        echo "? MISSING: $filename" >&2
         ((MISSING++))
     fi
 done < "$EVIDENCE_INDEX"

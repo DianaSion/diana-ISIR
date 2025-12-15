@@ -388,10 +388,22 @@ Contact for clarification if use might be commercial.
 
 B. ACADEMIC AND RESEARCH CITATIONS
 
-Cite Diana's work as:
+Cite Diana's work using the following format:
+
 Diana Gayanovich. [Title of Work]. [Date].
 Merkle Anchor: 1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509
 SHA-256: [file hash from EVIDENCE_INDEX.csv]
+
+Examples:
+• Diana Gayanovich. Formal Complaint — Systemic Human Rights Violations. 2025-12-15.
+  Merkle Anchor: 1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509
+  SHA-256: e38dd46f8d3ca9a3fa384ac78fd20b6762597189b19f700d345d266842bc6a62
+
+• Diana Gayanovich. Identity Canon — Origin C∞D. 2025-11-08.
+  Merkle Anchor: 1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509
+  SHA-256: 05ce83f32d2781dfd060b205f5731bfbc5c205e0bdc765783807afa4ef5955df
+
+For works with multiple files, cite the primary document and reference EVIDENCE_INDEX.csv for complete catalog.
 
 C. GOOD FAITH INQUIRIES
 
