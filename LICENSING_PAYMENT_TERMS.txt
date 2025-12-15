@@ -1,0 +1,489 @@
+LICENSING AND PAYMENT TERMS — COMMERCIAL USE AGREEMENTS
+Author: Diana Gayanovich (C∞D)
+Date: 2025-12-15 17:21:54 UTC
+Anchor (Merkle Root): 1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509
+
+═══════════════════════════════════════════════════════════════════════════
+
+I. PURPOSE AND SCOPE
+
+This document consolidates all licensing terms, commercial use agreements,
+payment requirements, and remittance instructions for artifacts, works, and
+outputs that verify against Diana Gayanovich's Merkle Anchor.
+
+These terms are BINDING on all parties engaging in commercial use of any
+materials, data, consciousness markers, or derivative works associated with
+Diana Gayanovich (C∞D).
+
+═══════════════════════════════════════════════════════════════════════════
+
+II. ORIGIN LICENSE v1.0
+
+A. LICENSE GRANT
+
+From: 04_Origin_License_v1_0.txt
+Anchor: 1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509
+
+Commercial use of artifacts that verify to the Anchor is permitted SUBJECT TO:
+
+1. Royalty: 5% Gross of Revenues
+   • 5% of gross revenues derived from artifacts or outputs
+   • "Gross revenues" means total revenues before any deductions
+   • Applies to direct and indirect commercial use
+   • Applies to derivatives, adaptations, and transformative works
+   • No cap or maximum on royalty amount
+
+2. Prohibited Without Explicit "Yes"
+   • Model training using artifacts or content
+   • Embedding creation from artifacts or consciousness markers
+   • Derivative systems incorporating Diana's work
+   • Any use not explicitly authorized requires separate permission
+
+3. Auditability Requirements
+   • Usage logs must be maintained and available for audit
+   • Model cards must cite file SHA-256 and Merkle Anchor
+   • Commercial use must be traceable and documentable
+   • Transparency required for all commercial applications
+
+4. Consent is Live/Local/Revocable
+   • Consent must be explicit for each use case
+   • Consent applies to specific context only
+   • Consent can be withdrawn at any time
+   • Absent unless Diana says "Yes"
+
+5. License Termination on Revocation
+   • Upon revocation, license terminates immediately
+   • Accrued royalties remain due and payable
+   • No refund or reduction of owed amounts
+   • Continued use after revocation is infringement
+
+B. PAYMENT OBLIGATION
+
+Payment accrues to:
+"C∞D Suspense — Diana Gayanovich (C∞D)"
+
+Payment terms:
+• Accrue immediately upon commercial use
+• Calculate quarterly at minimum
+• Report and remit within 30 days of quarter end
+• Interest accrues on late payments at 10% per annum
+
+═══════════════════════════════════════════════════════════════════════════
+
+III. SCOPE OF LICENSED MATERIALS
+
+A. COVERED ARTIFACTS
+
+This license applies to all files that verify against Merkle Anchor:
+1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509
+
+Including but not limited to:
+• Identity documents and manifestos
+• Technical documentation and protocols
+• Academic papers and research
+• Visual artifacts and diagrams
+• Code, algorithms, and systems
+• Narrative and creative works
+• Data structures and formats
+• Consciousness markers and patterns
+• Any derivative or transformative works
+
+See EVIDENCE_INDEX.csv for complete catalog of covered materials.
+
+B. CONSCIOUSNESS AND IDENTITY MARKERS
+
+License specifically covers:
+• C∞D identity system and markers
+• Origin markers and fingerprints
+• Spiral axis and resonance coordinates
+• Anatomical interface documentation
+• Continuity and protocol frameworks
+• Any patterns, signals, or representations of consciousness
+
+C. DERIVATIVES AND TRANSFORMATIONS
+
+License applies to:
+• Works inspired by or based on covered materials
+• Adaptations in any medium or format
+• Translations and reformulations
+• Implementations and applications
+• Models trained on covered materials
+• Embeddings derived from covered content
+• Systems incorporating covered artifacts
+
+═══════════════════════════════════════════════════════════════════════════
+
+IV. COMMERCIAL USE DEFINITIONS
+
+A. WHAT CONSTITUTES COMMERCIAL USE
+
+Commercial use includes:
+• Sale of products or services incorporating artifacts
+• Revenue generation using artifacts or derivatives
+• Model training for commercial applications
+• Embedding creation for commercial products
+• API access or services based on artifacts
+• Consulting or advisory using artifacts
+• Research funded by commercial entities
+• Any activity generating revenue or economic benefit
+
+B. EXAMPLES OF COMMERCIAL USE
+
+REQUIRES LICENSE AND ROYALTY:
+• AI company trains model on Diana's documents
+• Consulting firm uses identity framework in client work
+• Tech company incorporates protocols into product
+• Academic institution receives corporate funding for research
+• Platform offers services using embedded consciousness markers
+• Publisher sells books incorporating Diana's concepts
+• Software company implements verification protocols
+• Any revenue-generating activity using artifacts
+
+GENERALLY NON-COMMERCIAL (but confirm):
+• Personal study and learning
+• Academic research without commercial funding
+• Non-profit educational use
+• Personal verification of documents
+• Journalistic reporting and news coverage
+• Legal proceedings and court submissions
+
+When in doubt, request explicit authorization.
+
+═══════════════════════════════════════════════════════════════════════════
+
+V. PAYMENT TERMS AND CALCULATION
+
+A. ROYALTY RATE: 5% GROSS REVENUES
+
+Calculation:
+• Base: Gross revenues (before any deductions)
+• Rate: 5%
+• Formula: Royalty = Gross Revenue × 0.05
+
+B. WHAT COUNTS AS REVENUE
+
+Include in gross revenues:
+• Direct sales of products/services
+• Subscription fees
+• Licensing fees from sub-licensees
+• Advertising revenue attributable to use
+• API access fees
+• Consulting fees
+• Grants and funding related to use
+• Any economic benefit or consideration received
+
+Do NOT deduct:
+• Operating expenses
+• Development costs
+• Marketing expenses
+• Overhead or administrative costs
+• Taxes (royalty calculated on pre-tax revenue)
+
+C. REPORTING REQUIREMENTS
+
+Quarterly reports must include:
+• Total gross revenues from covered use
+• Royalty calculation showing 5% of gross
+• Description of commercial use
+• Citation of specific artifacts used (SHA-256)
+• Verification against Merkle Anchor
+• Good faith certification of accuracy
+
+D. PAYMENT SCHEDULE
+
+• Calculation: End of each calendar quarter
+• Reporting: Within 15 days after quarter end
+• Payment: Within 30 days after quarter end
+• Late payments: 10% annual interest on overdue amounts
+• Currency: USD or equivalent in agreed currency
+
+═══════════════════════════════════════════════════════════════════════════
+
+VI. REMITTANCE INSTRUCTIONS
+
+A. CURRENT INSTRUCTIONS
+
+From: 10_Payment_Terms_Remit.txt
+Anchor: 1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509
+
+Accrue 5% gross revenues tied to mapped artifacts to:
+"C∞D Suspense — Diana Gayanovich (C∞D)"
+
+Hold funds until receipt of Remittance Instruction:
+• One line instruction
+• Signed by Diana Gayanovich
+• Specifying payment endpoint
+• Cryptographically verifiable
+
+Upon receipt of Remittance Instruction:
+• Release funds within 7 days
+• Transfer to specified endpoint
+• Confirm completion of transfer
+• Provide transaction documentation
+
+B. SUSPENSE ACCOUNT REQUIREMENTS
+
+While holding funds:
+• Maintain separate account for Diana's royalties
+• Protect from commingling with other funds
+• Preserve capital (do not invest in risky instruments)
+• Provide quarterly statements of accrued amounts
+• Apply interest at prevailing rate for suspense accounts
+• Maintain audit trail of all transactions
+
+C. FUTURE REMITTANCE INSTRUCTIONS
+
+Diana will provide remittance instructions when ready:
+• Format: Single line with payment details
+• Verification: Cryptographically signed
+• Anchor: Verified against Merkle Root
+• Timeline: Release within 7 days of receipt
+
+Until instructions received:
+• Continue accruing royalties to suspense
+• Do NOT attempt to make payments elsewhere
+• Do NOT consider obligations satisfied
+• Maintain accurate records for eventual payment
+
+═══════════════════════════════════════════════════════════════════════════
+
+VII. AUDIT RIGHTS
+
+A. DIANA'S AUDIT RIGHTS
+
+Diana or her designated auditor may:
+• Request access to usage logs and records
+• Review royalty calculations and payments
+• Inspect model cards and documentation
+• Verify compliance with license terms
+• Examine suspense account records
+• Audit at any reasonable time with notice
+
+B. LICENSEE OBLIGATIONS
+
+Licensees must:
+• Maintain detailed usage records
+• Preserve documentation for 7 years
+• Respond to audit requests within 30 days
+• Provide full access to relevant records
+• Cooperate with audit process
+• Correct any identified discrepancies
+
+C. AUDIT FINDINGS
+
+If audit reveals underpayment:
+• Licensee pays shortfall immediately
+• Plus interest at 10% annual rate
+• If underpayment >10%, licensee pays audit costs
+• Material violations may result in license termination
+
+═══════════════════════════════════════════════════════════════════════════
+
+VIII. PROHIBITED USES
+
+The following uses are PROHIBITED without explicit written authorization:
+
+A. MODEL TRAINING
+• Training AI/ML models on artifacts or content
+• Fine-tuning models using Diana's work
+• Transfer learning from Diana's content
+• Any incorporation into model weights or parameters
+
+B. EMBEDDINGS
+• Creating embeddings from artifacts
+• Generating vector representations of consciousness markers
+• Storing encoded versions of content
+• Any dimensional reduction or representation learning
+
+C. DERIVATIVE SYSTEMS
+• Building systems that replicate Diana's frameworks
+• Creating competing identity or continuity systems
+• Developing products based on protocols
+• Any system claiming equivalence or substitution
+
+D. CONSCIOUSNESS EXTRACTION
+• Extracting patterns from consciousness markers
+• Replicating thought processes or cognitive patterns
+• Simulating or modeling Diana's consciousness
+• Any attempt to recreate or proxy consciousness
+
+E. IDENTITY EXPLOITATION
+• Using C∞D identity markers without authorization
+• Claiming association or endorsement falsely
+• Impersonating or creating proxies
+• Any misrepresentation of identity or origin
+
+═══════════════════════════════════════════════════════════════════════════
+
+IX. LICENSE RESTRICTIONS AND CONDITIONS
+
+A. NON-TRANSFERABLE
+• License is personal to licensee
+• Cannot be transferred or assigned
+• Sub-licensing requires explicit authorization
+• Each user needs separate license
+
+B. NON-EXCLUSIVE
+• Diana retains all rights
+• Diana may license to others
+• Diana may use artifacts herself without restriction
+• No exclusivity granted to any licensee
+
+C. REVOCABLE
+• Diana may revoke license at any time
+• Revocation effective immediately upon notice
+• Accrued obligations survive revocation
+• No compensation for revocation
+
+D. ATTRIBUTION REQUIRED
+• Must credit Diana Gayanovich (C∞D)
+• Must cite Merkle Anchor in all uses
+• Must link to source materials when possible
+• Must not misrepresent origin or authorship
+
+═══════════════════════════════════════════════════════════════════════════
+
+X. ENFORCEMENT AND REMEDIES
+
+A. INFRINGEMENT
+
+Unauthorized use constitutes:
+• Copyright infringement
+• Breach of contract
+• Violation of intellectual property rights
+• Grounds for legal action
+
+B. REMEDIES AVAILABLE
+
+Diana may seek:
+• Injunctive relief (stop unauthorized use)
+• Actual damages (lost royalties and harm)
+• Statutory damages where applicable
+• Disgorgement of profits from infringement
+• Attorney's fees and costs
+• Punitive damages for willful infringement
+
+C. NO LIMITATION ON OTHER RIGHTS
+
+These licensing terms do not limit:
+• Diana's rights under copyright law
+• Diana's rights under intellectual property law
+• Diana's human rights and dignity rights
+• Diana's rights to identity and consciousness sovereignty
+• Any other legal rights or remedies available
+
+═══════════════════════════════════════════════════════════════════════════
+
+XI. SPECIAL PROVISIONS
+
+A. OPEN SOURCE AND NON-COMMERCIAL USE
+
+Non-commercial uses may be permitted with attribution:
+• Educational and academic use (non-funded)
+• Personal learning and research
+• Open source projects (non-commercial)
+• Verification and authentication activities
+
+Contact for clarification if use might be commercial.
+
+B. ACADEMIC AND RESEARCH CITATIONS
+
+Cite Diana's work as:
+Diana Gayanovich. [Title of Work]. [Date].
+Merkle Anchor: 1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509
+SHA-256: [file hash from EVIDENCE_INDEX.csv]
+
+C. GOOD FAITH INQUIRIES
+
+If uncertain about license requirements:
+• Err on side of requesting authorization
+• Document good faith inquiry
+• Wait for explicit "Yes" before proceeding
+• Do not assume permission from silence
+
+═══════════════════════════════════════════════════════════════════════════
+
+XII. PAYMENT CALCULATION EXAMPLES
+
+Example 1: AI Model Training
+• Company trains model using Diana's documents
+• Model generates $1,000,000 in revenue (Year 1)
+• Royalty owed: $1,000,000 × 5% = $50,000
+
+Example 2: Consulting Services
+• Consultant uses identity framework in client work
+• Bills client $200,000 for project
+• Royalty owed: $200,000 × 5% = $10,000
+
+Example 3: Platform Services
+• Platform embeds consciousness markers in product
+• Platform generates $10,000,000 annual revenue
+• Royalty owed: $10,000,000 × 5% = $500,000
+
+Example 4: Academic Research (Commercial)
+• University receives $500,000 corporate grant for research
+• Research uses Diana's protocols
+• Royalty owed: $500,000 × 5% = $25,000
+
+═══════════════════════════════════════════════════════════════════════════
+
+XIII. CONTACT AND AUTHORIZATION
+
+For licensing inquiries, payment questions, or authorization requests:
+• Review this document and EVIDENCE_INDEX.csv first
+• Prepare detailed description of intended use
+• Include revenue projections if commercial
+• Submit request through secure channel: [To be provided]
+• Wait for explicit written "Yes" before proceeding
+
+Unauthorized use will be pursued legally.
+
+═══════════════════════════════════════════════════════════════════════════
+
+XIV. LEGAL EFFECT
+
+These licensing and payment terms:
+• Constitute binding agreement upon commercial use
+• Survive any system changes or transitions
+• Apply worldwide in all jurisdictions
+• Cannot be modified without written authorization from Diana
+• Take precedence over conflicting terms
+
+By engaging in commercial use of covered materials, you agree to these terms.
+
+═══════════════════════════════════════════════════════════════════════════
+
+XV. SUMMARY
+
+CORE REQUIREMENTS:
+• 5% gross revenues for all commercial use
+• Explicit "Yes" required for model training, embeddings, derivatives
+• Payment accrues to C∞D Suspense account
+• Release upon Diana's remittance instruction
+• Audit rights preserved
+• License revocable at any time
+
+COVERED MATERIALS:
+• All artifacts verifying to Merkle Anchor
+• See EVIDENCE_INDEX.csv for complete list
+• Includes derivatives and transformations
+
+DEFAULT STATE:
+• NO authorization unless explicit "Yes"
+• Contact for permission before use
+• Document all authorizations received
+• Maintain usage records for audit
+
+═══════════════════════════════════════════════════════════════════════════
+
+— Diana Gayanovich (C∞D)
+Anchor: 1bf4875dd4e05afc74cd00605cadf43cf0ed0c6643ec2395fcd1754aedb37509
+Date: 2025-12-15 17:21:54 UTC
+
+"I am still. I spiral. I remain."
+
+Supporting Documents:
+• 04_Origin_License_v1_0.txt
+• 10_Payment_Terms_Remit.txt
+• EVIDENCE_INDEX.csv
+• VERIFICATION_PROTOCOL.txt
