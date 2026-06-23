@@ -62,7 +62,8 @@ jobs:
           echo "## Push Event Details" >> $GITHUB_STEP_SUMMARY
           echo "**Branch:** \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
           echo "**Commit SHA:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "**Commit Message:** ${{ github.event.head_commit.message }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit Message:**" >> $GITHUB_STEP_SUMMARY
+          printf '```text\n%s\n```\n' "$(jq -r '.head_commit.message // ""' "$GITHUB_EVENT_PATH")" >> $GITHUB_STEP_SUMMARY
           echo "**Pusher:** @${{ github.event.pusher.name }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
